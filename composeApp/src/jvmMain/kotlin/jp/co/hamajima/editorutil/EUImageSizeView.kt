@@ -32,7 +32,7 @@ const val DEFAULT_PPI = 350
 @Composable
 @Preview
 fun EUImageSizeView() {
-    val initialPpi = settings.getInt("ppi", DEFAULT_PPI)
+    val initialPpi = settings.getInt("eu_ppi", DEFAULT_PPI)
     var ppiStr by remember { mutableStateOf(initialPpi.toString()) }
     var imageSize: EUImageSize by remember { mutableStateOf(EUImageSize.fromPxAndPpi(0, 0, initialPpi)) }
     var image: ImageBitmap? by remember { mutableStateOf<ImageBitmap?>(null) }
@@ -84,7 +84,7 @@ fun EUImageSizeView() {
                                     imageSize.height,
                                     value
                                 )
-                                settings.putInt("ppi", value)
+                                settings.putInt("eu_ppi", value)
                             }
                             ppiStr = it
                         },

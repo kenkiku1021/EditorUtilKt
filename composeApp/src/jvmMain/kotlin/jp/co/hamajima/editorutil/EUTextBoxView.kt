@@ -21,17 +21,17 @@ const val DEFAULT_LINE_HEIGHT = 24.0
 @Composable
 fun EUTextBoxView() {
     var fontSizeUnit by remember { mutableStateOf(FontSizeUnit.Q) }
-    val initialFontSize = settings.getDouble("fontSize", DEFAULT_FONT_SIZE)
+    val initialFontSize = settings.getDouble("eu_fontSize", DEFAULT_FONT_SIZE)
     var fontSizeStr by remember { mutableStateOf(formatLength(initialFontSize)) }
-    val initialLineHeight = settings.getDouble("lineHeight", DEFAULT_LINE_HEIGHT)
+    val initialLineHeight = settings.getDouble("eu_lineHeight", DEFAULT_LINE_HEIGHT)
     var lineHeightStr by remember { mutableStateOf(formatLength(initialLineHeight)) }
-    val initialCols = settings.getInt("cols", 0)
+    val initialCols = settings.getInt("eu_cols", 0)
     var colsStr by remember { mutableStateOf(initialCols.toString()) }
-    val initialRows = settings.getInt("rows", 0)
+    val initialRows = settings.getInt("eu_rows", 0)
     var rowsStr by remember { mutableStateOf(initialRows.toString()) }
-    val initialWidth = settings.getDouble("width", 0.0)
+    val initialWidth = settings.getDouble("eu_width", 0.0)
     var widthStr by remember { mutableStateOf(initialWidth.toString()) }
-    val initialHeight = settings.getDouble("height", 0.0)
+    val initialHeight = settings.getDouble("eu_height", 0.0)
     var heightStr by remember { mutableStateOf(initialHeight.toString()) }
     var box by remember { mutableStateOf(EUTextBox.fromColsAndRows(
         EULength.fromQ(initialFontSize),
@@ -40,12 +40,12 @@ fun EUTextBoxView() {
         initialRows)) }
 
     val updateBoxStr = {
-        settings.putDouble("fontSize", box.fontSize.lengthInQ)
-        settings.putDouble("lineHeight", box.lineHeight.lengthInQ)
-        settings.putInt("cols", box.cols)
-        settings.putInt("rows", box.rows)
-        settings.putDouble("width", box.width.lengthInMm)
-        settings.putDouble("height", box.height.lengthInMm)
+        settings.putDouble("eu_fontSize", box.fontSize.lengthInQ)
+        settings.putDouble("eu_lineHeight", box.lineHeight.lengthInQ)
+        settings.putInt("eu_cols", box.cols)
+        settings.putInt("eu_rows", box.rows)
+        settings.putDouble("eu_width", box.width.lengthInMm)
+        settings.putDouble("eu_height", box.height.lengthInMm)
         fontSizeStr = formatLength(box.fontSize.lengthInQ)
         lineHeightStr = formatLength(box.lineHeight.lengthInQ)
         colsStr = box.cols.toString()

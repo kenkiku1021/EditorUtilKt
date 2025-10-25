@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun EULengthConverterView() {
-    val initialLength = EULength(settings.getDouble("length", 0.0))
+    val initialLength = EULength(settings.getDouble("eu_length", 0.0))
     var mmLengthStr by remember { mutableStateOf(formatLength(initialLength.lengthInMm)) }
     var inchesLengthStr by remember { mutableStateOf( formatLength(initialLength.lengthInInches)) }
     var ptLengthStr by remember { mutableStateOf(formatLength(initialLength.lengthInPt)) }
@@ -24,7 +24,7 @@ fun EULengthConverterView() {
     var length by remember { mutableStateOf(initialLength) }
 
     val updateLengthStr = {
-        settings.putDouble("length", length.lengthInMm)
+        settings.putDouble("eu_length", length.lengthInMm)
         mmLengthStr = formatLength(length.lengthInMm)
         inchesLengthStr = formatLength(length.lengthInInches)
         ptLengthStr = formatLength(length.lengthInPt)
