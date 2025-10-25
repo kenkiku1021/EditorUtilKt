@@ -1,0 +1,9 @@
+package jp.co.hamajima.editorutil
+
+class Greeting {
+    private val platform = getPlatform()
+
+    fun greet(): String {
+        return "Hello, ${platform.name}!"
+    }
+}
