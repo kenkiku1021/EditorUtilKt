@@ -12,7 +12,7 @@ import javax.swing.filechooser.FileNameExtensionFilter
 fun EUImageLoader(): ImageBitmap { // JVM-specific image loading implementation
     // ファイル選択ダイアログを作成
     val chooser = JFileChooser().apply {
-        fileFilter = FileNameExtensionFilter("Image files", "png", "jpg", "jpeg", "tif", "psd", "webp")
+        fileFilter = FileNameExtensionFilter("Image files", "png", "jpg", "jpeg")
         dialogTitle = "画像を選択"
         // 初期ディレクトリをユーザーのホームに設定（任意）
         currentDirectory = File( settings.getString("eu_lastImageDir", System.getProperty("user.home")) )

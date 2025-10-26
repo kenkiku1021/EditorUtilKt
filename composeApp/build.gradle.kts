@@ -1,10 +1,12 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 kotlin {
@@ -21,11 +23,6 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation("com.twelvemonkeys.imageio:imageio-core:3.12.0")
-            implementation("com.twelvemonkeys.imageio:imageio-jpeg:3.12.0")
-            implementation("com.twelvemonkeys.imageio:imageio-tiff:3.12.0")
-            implementation("com.twelvemonkeys.imageio:imageio-psd:3.12.0")
-            implementation("com.twelvemonkeys.imageio:imageio-webp:3.12.0")
             implementation("com.russhwolf:multiplatform-settings-no-arg:1.3.0")
         }
         commonTest.dependencies {
@@ -38,7 +35,6 @@ kotlin {
             implementation("org.jetbrains.skiko:skiko-awt:0.9.22.2")
             // プラットフォーム固有のランタイムも追加（Windows x64）
             implementation("org.jetbrains.skiko:skiko-awt-runtime-windows-x64:0.9.22.2")
-            implementation("com.russhwolf:multiplatform-settings-no-arg:1.3.0")
         }
     }
 }
@@ -50,7 +46,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Exe, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "EditorUtil"
-            packageVersion = "1.0.1"
+            packageVersion = "1.0.2"
 
             windows {
                 menuGroup = "EditorUtil"
